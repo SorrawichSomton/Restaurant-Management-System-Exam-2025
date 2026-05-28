@@ -40,7 +40,7 @@ jobs:
       - name: Start backend server
         working-directory: backend
         run: |
-          echo 'DATABASE_URL="file:./dev.db"' > .env
+          echo 'DATABASE_URL="postgresql://postgres:postgres@localhost:5432/booking_app"' > .env
           echo 'JWT_SECRET="supersecretkey"' >> .env
           echo 'PORT=3001' >> .env
           echo 'NODE_ENV=development' >> .env
