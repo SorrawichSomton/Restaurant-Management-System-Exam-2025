@@ -35,15 +35,15 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Install Newman
-  run: npm install -g newman newman-reporter-htmlextra
+        run: npm install -g newman newman-reporter-htmlextra
 
-- name: Start backend server
-  working-directory: backend
-  run: |
-    npm run dev &
-    sleep 15
+      - name: Start backend server
+        working-directory: backend
+        run: |
+          npm run dev &
+          sleep 15
 
-- name: Run Newman Tests
-  run: |
-    newman run tests/postman/RMS-TestSuite-v2.json \
-    --reporters cli
+      - name: Run Newman Tests
+        run: |
+          newman run tests/postman/RMS-TestSuite-v2.json \
+          --reporters cli
