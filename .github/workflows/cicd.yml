@@ -51,5 +51,5 @@ jobs:
 
       - name: Run Newman Tests
         run: |
-          newman run tests/postman/RMS-TestSuite.json \
+          newman run tests/postman/RMS-TestSuite-v2.json \
           --reporters cli
