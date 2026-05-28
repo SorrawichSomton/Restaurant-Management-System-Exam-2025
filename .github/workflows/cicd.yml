@@ -53,3 +53,4 @@ jobs:
           newman run tests/postman/RMS-TestSuite-v2.json \
             --reporters htmlextra \
             --reporter-htmlextra-export newman_report.html
+             --verbose
