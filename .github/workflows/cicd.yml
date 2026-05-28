@@ -49,8 +49,7 @@ jobs:
           sleep 20
 
       - name: Run Newman Tests
-        run: |
-          newman run tests/postman/RMS-TestSuite-v2.json \
+        run: newman run tests/postman/RMS-TestSuite-v2.json --verbose
             --reporters htmlextra \
             --reporter-htmlextra-export newman_report.html
              --verbose
