@@ -2,9 +2,7 @@
   "info": {
     "_postman_id": "db31dfc5-e42e-4a31-9bfa-c809c8856c81",
     "name": "RMS-68030287-TestSuite",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "52714256",
-    "_collection_link": "https://go.postman.co/collection/52714256-db31dfc5-e42e-4a31-9bfa-c809c8856c81?source=collection_link"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
@@ -14,35 +12,23 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Response status is ok\", function () {\r",
-              "    const jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.status).to.eql(\"ok\");\r",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response status is ok\", function () {",
+              "  const jsonData = pm.response.json();",
+              "  pm.expect(jsonData.status).to.eql(\"ok\");",
               "});"
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "type": "text/javascript"
           }
         }
       ],
       "request": {
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "{{base_url}}/health",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "health"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{base_url}}/health"
+      }
     },
     {
       "name": "Login Admin",
@@ -51,49 +37,39 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Login success\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Response has JWT token\", function () {\r",
-              "    const jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData).to.have.property(\"token\");\r",
-              "});\r",
-              "\r",
-              "const jsonData = pm.response.json();\r",
-              "pm.environment.set(\"admin_token\", jsonData.token);\r",
-              "pm.environment.set(\"token\", jsonData.token);"
+              "pm.test(\"Login success\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response has JWT token\", function () {",
+              "  const jsonData = pm.response.json();",
+              "  pm.expect(jsonData).to.have.property(\"token\");",
+              "  pm.environment.set(\"admin_token\", jsonData.token);",
+              "  pm.environment.set(\"token\", jsonData.token);",
+              "});"
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "type": "text/javascript"
           }
         }
       ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"Admin@123\"\r\n}",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"Admin@123\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         },
-        "url": {
-          "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{base_url}}/auth/login"
+      }
     },
     {
       "name": "Get Orders",
@@ -102,18 +78,15 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Get orders success\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Response is array\", function () {\r",
-              "    const jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData).to.be.an('array');\r",
+              "pm.test(\"Get orders success\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response is array\", function () {",
+              "  const jsonData = pm.response.json();",
+              "  pm.expect(jsonData).to.be.an(\"array\");",
               "});"
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "type": "text/javascript"
           }
         }
       ],
@@ -123,24 +96,15 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJBZG1pbiBVc2VyIiwiaWF0IjoxNzc5OTgyNTUxLCJleHAiOjE3ODAwMTEzNTF9.rtXqraJZWJKYgVq6wVJ11zwsSUsUExOjMB8Wly_gTnw",
+              "value": "{{token}}",
               "type": "string"
             }
           ]
         },
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "{{base_url}}/orders",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "orders"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{base_url}}/orders"
+      }
     },
     {
       "name": "Login Wrong Password",
@@ -149,40 +113,33 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Unauthorized login\", function () {\r",
-              "    pm.response.to.have.status(401);\r",
+              "pm.test(\"Unauthorized login\", function () {",
+              "  pm.response.to.have.status(401);",
               "});"
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "type": "text/javascript"
           }
         }
       ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"wrong\"\r\n}",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"wrong\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         },
-        "url": {
-          "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{base_url}}/auth/login"
+      }
     },
     {
       "name": "Get Orders No Token",
@@ -191,13 +148,11 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Unauthorized without token\", function () {\r",
-              "    pm.response.to.have.status(401);\r",
+              "pm.test(\"Unauthorized without token\", function () {",
+              "  pm.response.to.have.status(401);",
               "});"
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "type": "text/javascript"
           }
         }
       ],
@@ -207,17 +162,8 @@
         },
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "{{base_url}}/orders",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "orders"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{base_url}}/orders"
+      }
     }
   ]
 }
