@@ -50,6 +50,6 @@ jobs:
 
       - name: Run Newman Tests
         run: |
-          newman run postman_tests/Restaurant-Management-System.postman_collection.json \
+          newman run tests/postman/RMS-TestSuite-v2.json \
             --reporters htmlextra \
             --reporter-htmlextra-export newman_report.html
