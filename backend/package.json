@@ -17,6 +17,13 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "tsc --noEmit"
+},
+
+    "prisma": {
+    "seed": "tsx prisma/seed.ts"
+},
+
+"dependencies": {
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
